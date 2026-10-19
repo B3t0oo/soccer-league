@@ -142,7 +142,7 @@
         <p>&copy; 2026 Community Soccer League Hub. All rights reserved.</p>
     </footer>
 
-    <!-- Built-in automation script to load data directly from Excel's CSV output -->
+    <!-- Built-in automation script to sync Standings and Schedule names directly from CSV -->
     <script>
         fetch('standings.csv')
             .then(response => {
@@ -152,38 +152,65 @@
                 return response.text();
             })
             .then(data => {
-                // Cleans up messy Windows line endings safely
                 const rows = data.split('\n');
-                let html = '';
+                let standingsHtml = '';
+                
+                // Create an empty "Dictionary" or Array map to link Generic IDs to Custom Names
+                // e.g., teamMap["Team 1"] = "Real Madrid"
+                const teamMap = {};
                 
                 // Skip the first row (the column headers)
                 for (let i = 1; i < rows.length; i++) {
                     const row = rows[i].trim();
-                    
                     if (!row) continue; // Skip empty rows
                     
                     const columns = row.split(',');
                     
                     if (columns.length >= 7) {
                         const pos = columns[0].trim();
-                        const team = columns[1].trim();
+                        const teamName = columns[1].trim();
                         const gp = columns[2].trim();
                         const w = columns[3].trim();
                         const d = columns[4].trim();
                         const l = columns[5].trim();
                         const pts = columns[6].trim();
                         
+                        // Map the generic name identifier based on its database position (i)
+                        // This links the current custom name to its hardcoded position
+                        teamMap[`Team ${i}`] = teamName;
+                        
                         if (pos === "1") {
-                            html += `<tr class="top-team"><td>1</td><td><strong>${team}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                            standingsHtml += `<tr class="top-team"><td>1</td><td><strong>${teamName}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
                         } else {
-                            html += `<tr><td>${pos}</td><td>${team}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                            standingsHtml += `<tr><td>${pos}</td><td>${teamName}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
                         }
                     }
                 }
-                document.getElementById('standings-data').innerHTML = html;
+                
+                // Inject the custom rows into the standings block
+                document.getElementById('standings-data').innerHTML = standingsHtml;
+                
+                // --- DYNAMIC NAME SWAPPER FOR MATCH SCHEDULE ---
+                // Find all match elements on the page
+                const matchElements = document.querySelectorAll('.teams');
+                
+                matchElements.forEach(element => {
+                    let text = element.innerHTML;
+                    
+                    // Loop through our 16 mapped slots and replace "Team X" with their actual name
+                    for (let j = 1; j <= 16; j++) {
+                        const genericPlaceholder = `Team ${j}`;
+                        if (text.includes(genericPlaceholder) && teamMap[genericPlaceholder]) {
+                            text = text.replace(genericPlaceholder, teamMap[genericPlaceholder]);
+                        }
+                    }
+                    
+                    // Push the shiny new team names directly onto the schedule layout canvas
+                    element.innerHTML = text;
+                });
             })
             .catch(error => {
-                console.error('Error processing standings:', error);
+                console.error('Error processing standings and schedule naming hooks:', error);
                 document.getElementById('standings-data').innerHTML = `<tr><td colspan="7" style="color: red; text-align:center;">Failed to load data.</td></tr>`;
             });
     </script>
