@@ -143,30 +143,27 @@
     </footer>
 
     <!-- Built-in automation script to load data directly from Excel's CSV output -->
-       <script>
-        // Safely fetch your uploaded standings spreadsheet
+    <script>
         fetch('standings.csv')
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Could not find the standings.csv file in repository.");
+                    throw new Error("Could not find the standings.csv file.");
                 }
                 return response.text();
             })
             .then(data => {
-                // Break into rows, cleaning up Windows line endings \((\r)\) automatically
-                const rows = data.replace(\(/\r/\)g, "").split('\n');
+                // Cleans up messy Windows line endings safely
+                const rows = data.split('\n');
                 let html = '';
                 
-                // Skip the first row (the column headers like Pos, Team, etc.)
+                // Skip the first row (the column headers)
                 for (let i = 1; i < rows.length; i++) {
                     const row = rows[i].trim();
                     
-                    // Skip completely empty lines at the bottom of Excel sheets
-                    if (!row) continue; 
+                    if (!row) continue; // Skip empty rows
                     
                     const columns = row.split(',');
                     
-                    // Confirm we have a complete data row before building table panels
                     if (columns.length >= 7) {
                         const pos = columns[0].trim();
                         const team = columns[1].trim();
@@ -176,7 +173,6 @@
                         const l = columns[5].trim();
                         const pts = columns[6].trim();
                         
-                        // Style the 1st place team banner
                         if (pos === "1") {
                             html += `<tr class="top-team"><td>1</td><td><strong>${team}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
                         } else {
@@ -184,13 +180,11 @@
                         }
                     }
                 }
-                
-                // Inject columns directly into our standing container block
                 document.getElementById('standings-data').innerHTML = html;
             })
             .catch(error => {
-                console.error('Error processing live spreadsheet sync:', error);
-                document.getElementById('standings-data').innerHTML = `<tr><td colspan="7" style="color: red; text-align:center;">Failed to load stats: Make sure standings.csv is uploaded.</td></tr>`;
+                console.error('Error processing standings:', error);
+                document.getElementById('standings-data').innerHTML = `<tr><td colspan="7" style="color: red; text-align:center;">Failed to load data.</td></tr>`;
             });
     </script>
 
