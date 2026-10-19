@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Soccer League</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Hero / Header Section -->
+    <header>
+        <div class="logo">⚽</div>
+        <h1>Community Soccer League</h1>
+        <p>Friday Night Lights • 16 Teams • 3 Time Slots</p>
+        <a href="#schedule" class="cta-btn">View Match Schedule</a>
+    </header>
+
+    <main>
+        <!-- Notice Board Section -->
+        <section class="card">
+            <h2>League Notice Board</h2>
+            <p>Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time.</p>
+        </section>
+
+        <!-- Current Standings Table -->
+        <section class="card">
+            <h2>League Standings</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Team</th>
+                            <th>GP</th>
+                            <th>W</th>
+                            <th>D</th>
+                            <th>L</th>
+                            <th>Pts</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standings-data">
+                        <!-- Data will load automatically from your CSV file below -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Upcoming Match Schedule Section -->
+        <section id="schedule" class="card">
+            <h2>Upcoming Matches • Friday (Week 1)</h2>
+            <div class="schedule-grid">
+                
+                <!-- 7:00 PM - Single Game Slots -->
+                <div class="match">
+                    <span class="time">7:00 PM</span>
+                    <span class="teams">Team 1 <span style="color: #2ecc71;">VS</span> Team 2</span>
+                    <span class="field">Field 1a</span>
+                </div>
+                <div class="match">
+                    <span class="time">7:00 PM</span>
+                    <span class="teams">Team 3 <span style="color: #2ecc71;">VS</span> Team 4</span>
+                    <span class="field">Field 1b</span>
+                </div>
+
+                <!-- 8:00 PM - Double Game Slots (Leg 1) -->
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 6</span>
+                    <span class="field">Field 1a</span>
+                </div>
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 7 <span style="color: #2ecc71;">VS</span> Team 8</span>
+                    <span class="field">Field 1b</span>
+                </div>
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 10</span>
+                    <span class="field">Field 2a</span>
+                </div>
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 11 <span style="color: #2ecc71;">VS</span> Team 12</span>
+                    <span class="field">Field 2b</span>
+                </div>
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 14</span>
+                    <span class="field">Field 3a</span>
+                </div>
+                <div class="match">
+                    <span class="time">8:00 PM</span>
+                    <span class="teams">Team 15 <span style="color: #2ecc71;">VS</span> Team 16</span>
+                    <span class="field">Field 3b</span>
+                </div>
+
+                <!-- 9:00 PM - Double Game Slots (Leg 2) -->
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 7</span>
+                    <span class="field">Field 1a</span>
+                </div>
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 6 <span style="color: #2ecc71;">VS</span> Team 8</span>
+                    <span class="field">Field 1b</span>
+                </div>
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 11</span>
+                    <span class="field">Field 2a</span>
+                </div>
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 10 <span style="color: #2ecc71;">VS</span> Team 12</span>
+                    <span class="field">Field 2b</span>
+                </div>
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 15</span>
+                    <span class="field">Field 3a</span>
+                </div>
+                <div class="match">
+                    <span class="time">9:00 PM</span>
+                    <span class="teams">Team 14 <span style="color: #2ecc71;">VS</span> Team 16</span>
+                    <span class="field">Field 3b</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- League Contact Info -->
+        <section class="card highlight-card">
+            <h2>League Support & Registration</h2>
+            <p>Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us.</p>
+            <p><strong>Contact Email:</strong> admin@yoursoccerleague.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Community Soccer League Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Built-in automation script to load data directly from Excel's CSV output -->
+    <script>
+        fetch('standings.csv')
+            .then(response => response.text())
+            .then(data => {
+                const rows = data.split('\n').slice(1); // Read lines, skip the Excel header row
+                let html = '';
+                
+                rows.forEach(row => {
+                    const columns = row.split(',');
+                    if (columns.length >= 7) {
+                        const pos = columns[0].trim();
+                        const team = columns[1].trim();
+                        const gp = columns[2].trim();
+                        const w = columns[3].trim();
+                        const d = columns[4].trim();
+                        const l = columns[5].trim();
+                        const pts = columns[6].trim();
+                        
+                        if (pos === "1") {
+                            html += `<tr class="top-team"><td>1</td><td><strong>${team}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                        } else {
+                            html += `<tr><td>${pos}</td><td>${team}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                        }
+                    }
+                });
+                document.getElementById('standings-data').innerHTML = html;
+            })
+            .catch(error => console.error('Error loading standings:', error));
+    </script>
+
+</body>
+</html>

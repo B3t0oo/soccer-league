@@ -1,0 +1,191 @@
+/* Clean White Minimalist Page Layout */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #2d3748;
+    background-color: #ffffff; /* Crisp white background */
+}
+
+/* Vibrant Header with Dynamic Graphic Elements */
+header {
+    background: linear-gradient(135deg, #112211, #1e3a1e);
+    color: white;
+    text-align: center;
+    padding: 5rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Main Content Wrapper over the white background */
+main {
+    max-width: 800px;
+    margin: -3rem auto 3rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Cards with clean borders to pop off the white canvas */
+.card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+header h1 {
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+}
+
+.logo {
+    font-size: 3.5rem;
+}
+
+/* Call to Action Button */
+.cta-btn {
+    display: inline-block;
+    background-color: #2ecc71; /* Turf green */
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Container Structure */
+main {
+    max-width: 800px;
+    margin: -2rem auto 3rem auto; /* Overlaps slightly with hero header */
+    padding: 0 1rem;
+}
+
+/* Visual Content Cards */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.highlight-card {
+    border-left: 5px solid #2ecc71;
+    background-color: #f9fdfa;
+}
+
+h2 {
+    color: #1e3a1e;
+    margin-top: 0;
+    border-bottom: 2px solid #f0f4f1;
+    padding-bottom: 0.5rem;
+}
+
+/* Standings Table Styling */
+.table-container {
+    overflow-x: auto; /* Scrollable on small phone screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: #f7fafc;
+    color: #4a5568;
+}
+
+.top-team {
+    background-color: #edfbf2; /* Highlights the 1st place team */
+}
+
+/* Schedule Grid Container */
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Automatically tiles cards on large screens */
+    gap: 1.25rem;
+    padding-top: 1rem;
+}
+
+/* Upgraded Matchday Card */
+.match {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect to make the dashboard feel interactive */
+.match:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.15);
+    border-color: #2ecc71;
+}
+
+/* Time Badge (Gives it a professional tournament UI look) */
+.time {
+    display: inline-block;
+    background-color: #1e3a1e;
+    color: #2ecc71;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+/* Center Team Matchup text styling */
+.teams {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0.5rem 0;
+    word-spacing: 3px;
+}
+
+/* Styles the "vs" within team text to pop less than team names */
+.teams::after {
+    display: block;
+    font-size: 0.85rem;
+    color: #a0aec0;
+    font-weight: 400;
+    margin-top: 0.2rem;
+}
+
+/* Field Subtext Badge */
+.field {
+    font-size: 0.8rem;
+    color: #4a5568;
+    background: #f7fafc;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #edf2f7;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
