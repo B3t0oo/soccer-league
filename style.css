@@ -7,7 +7,35 @@ body {
     background-color: #ffffff; /* Crisp white background */
 }
 
-/* Vibrant Header with Dynamic Graphic Elements */
+/* Floating Translation Button Style Layout */
+.lang-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem 1rem 0 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#lang-btn {
+    background-color: #f7fafc;
+    border: 1px solid #cbd5e0;
+    color: #4a5568;
+    padding: 0.5rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#lang-btn:hover {
+    background-color: #edf2f7;
+    border-color: #a0aec0;
+    color: #1a202c;
+    transform: scale(1.02);
+}
+
+/* Header Section */
 header {
     background: linear-gradient(135deg, #112211, #1e3a1e);
     color: white;
@@ -15,6 +43,32 @@ header {
     padding: 5rem 1rem;
     position: relative;
     overflow: hidden;
+}
+
+header h1 {
+    margin: 0.5rem 0;
+    font-size: 2.5rem;
+}
+
+.logo {
+    font-size: 3.5rem;
+}
+
+/* Call to Action Button */
+.cta-btn {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 1rem;
+    transition: transform 0.2s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
 }
 
 /* Main Content Wrapper over the white background */
@@ -36,49 +90,6 @@ main {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-
-header h1 {
-    margin: 0.5rem 0;
-    font-size: 2.5rem;
-}
-
-.logo {
-    font-size: 3.5rem;
-}
-
-/* Call to Action Button */
-.cta-btn {
-    display: inline-block;
-    background-color: #2ecc71; /* Turf green */
-    color: white;
-    text-decoration: none;
-    padding: 0.8rem 2rem;
-    font-weight: bold;
-    border-radius: 50px;
-    margin-top: 1rem;
-    transition: transform 0.2s;
-}
-
-.cta-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Container Structure */
-main {
-    max-width: 800px;
-    margin: -2rem auto 3rem auto; /* Overlaps slightly with hero header */
-    padding: 0 1rem;
-}
-
-/* Visual Content Cards */
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
 .highlight-card {
     border-left: 5px solid #2ecc71;
     background-color: #f9fdfa;
@@ -93,7 +104,7 @@ h2 {
 
 /* Standings Table Styling */
 .table-container {
-    overflow-x: auto; /* Scrollable on small phone screens */
+    overflow-x: auto;
 }
 
 table {
@@ -113,18 +124,18 @@ th {
 }
 
 .top-team {
-    background-color: #edfbf2; /* Highlights the 1st place team */
+    background-color: #edfbf2;
 }
 
 /* Schedule Grid Container */
 .schedule-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Automatically tiles cards on large screens */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.25rem;
     padding-top: 1rem;
 }
 
-/* Upgraded Matchday Card */
+/* Matchday Card */
 .match {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -140,14 +151,13 @@ th {
     overflow: hidden;
 }
 
-/* Hover Effect to make the dashboard feel interactive */
 .match:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(46, 204, 113, 0.15);
     border-color: #2ecc71;
 }
 
-/* Time Badge (Gives it a professional tournament UI look) */
+/* Time Badge */
 .time {
     display: inline-block;
     background-color: #1e3a1e;
@@ -166,16 +176,6 @@ th {
     font-weight: 600;
     color: #1a202c;
     margin: 0.5rem 0;
-    word-spacing: 3px;
-}
-
-/* Styles the "vs" within team text to pop less than team names */
-.teams::after {
-    display: block;
-    font-size: 0.85rem;
-    color: #a0aec0;
-    font-weight: 400;
-    margin-top: 0.2rem;
 }
 
 /* Field Subtext Badge */
@@ -188,4 +188,12 @@ th {
     border: 1px solid #edf2f7;
     margin-top: 0.5rem;
     font-weight: 500;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+    font-size: 0.9rem;
 }

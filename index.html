@@ -8,133 +8,142 @@
 </head>
 <body>
 
+    <!-- Language Toggle Button -->
+    <div class="lang-container">
+        <button id="lang-btn" onclick="toggleLanguage()">Español 🇪🇸</button>
+    </div>
+
     <!-- Hero / Header Section -->
     <header>
         <div class="logo">⚽</div>
-        <h1>Community Soccer League</h1>
-        <p>Friday Night Lights • 16 Teams • 3 Time Slots</p>
-        <a href="#schedule" class="cta-btn">View Match Schedule</a>
+        <h1 data-en="Community Soccer League" data-es="Liga de Fútbol Comunitaria">Community Soccer League</h1>
+        <p data-en="Friday Night Lights • 16 Teams • 3 Time Slots" data-es="Viernes de Fútbol • 16 Equipos • 3 Horarios">Friday Night Lights • 16 Teams • 3 Time Slots</p>
+        <a href="#schedule" class="cta-btn" data-en="View Match Schedule" data-es="Ver Calendario de Partidos">View Match Schedule</a>
     </header>
 
     <main>
         <!-- Notice Board Section -->
         <section class="card">
-            <h2>League Notice Board</h2>
-            <p>Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time.</p>
+            <h2 data-en="League Notice Board" data-es="Tablón de Anuncios">League Notice Board</h2>
+            <p data-en="Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time." 
+               data-es="¡Bienvenidos jugadores, entrenadores y aficionados! Los partidos se juegan cada viernes por la noche en las canchas 1a a 3b. Por favor llegue 15 minutos antes de su hora de inicio.">
+               Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time.
+            </p>
         </section>
 
         <!-- Current Standings Table -->
         <section class="card">
-            <h2>League Standings</h2>
+            <h2 id="title-standings" data-en="League Standings" data-es="Tabla de Posiciones">League Standings</h2>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th>Pos</th>
-                            <th>Team</th>
-                            <th>GP</th>
-                            <th>W</th>
-                            <th>D</th>
-                            <th>L</th>
-                            <th>Pts</th>
+                            <th data-en="Pos" data-es="Pos">Pos</th>
+                            <th data-en="Team" data-es="Equipo">Team</th>
+                            <th data-en="GP" data-es="PJ">GP</th>
+                            <th data-en="W" data-es="G">W</th>
+                            <th data-en="D" data-es="E">D</th>
+                            <th data-en="L" data-es="P">L</th>
+                            <th data-en="Pts" data-es="Pts">Pts</th>
                         </tr>
                     </thead>
                     <tbody id="standings-data">
-                        <!-- Data will load automatically from your CSV file below -->
+                        <!-- Loaded automatically from CSV -->
                     </tbody>
                 </table>
             </div>
         </section>
-
         <!-- Upcoming Match Schedule Section -->
         <section id="schedule" class="card">
-            <h2>Upcoming Matches • Friday (Week 1)</h2>
+            <h2 data-en="Upcoming Matches • Friday (Week 1)" data-es="Próximos Partidos • Viernes (Semana 1)">Upcoming Matches • Friday (Week 1)</h2>
             <div class="schedule-grid">
                 
-                <!-- 7:00 PM - Single Game Slots -->
+                <!-- 7:00 PM Slots -->
                 <div class="match">
                     <span class="time">7:00 PM</span>
                     <span class="teams">Team 1 <span style="color: #2ecc71;">VS</span> Team 2</span>
-                    <span class="field">Field 1a</span>
+                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
                 </div>
                 <div class="match">
                     <span class="time">7:00 PM</span>
                     <span class="teams">Team 3 <span style="color: #2ecc71;">VS</span> Team 4</span>
-                    <span class="field">Field 1b</span>
+                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
                 </div>
 
-                <!-- 8:00 PM - Double Game Slots (Leg 1) -->
+                <!-- 8:00 PM Slots -->
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 6</span>
-                    <span class="field">Field 1a</span>
+                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
                 </div>
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 7 <span style="color: #2ecc71;">VS</span> Team 8</span>
-                    <span class="field">Field 1b</span>
+                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
                 </div>
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 10</span>
-                    <span class="field">Field 2a</span>
+                    <span class="field" data-en="Field 2a" data-es="Cancha 2a">Field 2a</span>
                 </div>
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 11 <span style="color: #2ecc71;">VS</span> Team 12</span>
-                    <span class="field">Field 2b</span>
+                    <span class="field" data-en="Field 2b" data-es="Cancha 2b">Field 2b</span>
                 </div>
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 14</span>
-                    <span class="field">Field 3a</span>
+                    <span class="field" data-en="Field 3a" data-es="Cancha 3a">Field 3a</span>
                 </div>
                 <div class="match">
                     <span class="time">8:00 PM</span>
                     <span class="teams">Team 15 <span style="color: #2ecc71;">VS</span> Team 16</span>
-                    <span class="field">Field 3b</span>
+                    <span class="field" data-en="Field 3b" data-es="Cancha 3b">Field 3b</span>
                 </div>
 
-                <!-- 9:00 PM - Double Game Slots (Leg 2) -->
+                <!-- 9:00 PM Slots -->
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 7</span>
-                    <span class="field">Field 1a</span>
+                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
                 </div>
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 6 <span style="color: #2ecc71;">VS</span> Team 8</span>
-                    <span class="field">Field 1b</span>
+                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
                 </div>
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 11</span>
-                    <span class="field">Field 2a</span>
+                    <span class="field" data-en="Field 2a" data-es="Cancha 2a">Field 2a</span>
                 </div>
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 10 <span style="color: #2ecc71;">VS</span> Team 12</span>
-                    <span class="field">Field 2b</span>
+                    <span class="field" data-en="Field 2b" data-es="Cancha 2b">Field 2b</span>
                 </div>
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 15</span>
-                    <span class="field">Field 3a</span>
+                    <span class="field" data-en="Field 3a" data-es="Cancha 3a">Field 3a</span>
                 </div>
                 <div class="match">
                     <span class="time">9:00 PM</span>
                     <span class="teams">Team 14 <span style="color: #2ecc71;">VS</span> Team 16</span>
-                    <span class="field">Field 3b</span>
+                    <span class="field" data-en="Field 3b" data-es="Cancha 3b">Field 3b</span>
                 </div>
 
             </div>
         </section>
-
         <!-- League Contact Info -->
         <section class="card highlight-card">
-            <h2>League Support & Registration</h2>
-            <p>Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us.</p>
-            <p><strong>Contact Email:</strong> admin@yoursoccerleague.com</p>
+            <h2 data-en="League Support & Registration" data-es="Soporte y Registro de la Liga">League Support & Registration</h2>
+            <p data-en="Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us."
+               data-es="¿Necesita reportar un error de puntaje, enviar un cambio de nómina o registrar a un jugador libre? Póngase en contacto con nosotros.">
+               Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us.
+            </p>
+            <p><strong data-en="Contact Email:" data-es="Correo de Contacto:">Contact Email:</strong> admin@yoursoccerleague.com</p>
         </section>
     </main>
 
@@ -142,79 +151,74 @@
         <p>&copy; 2026 Community Soccer League Hub. All rights reserved.</p>
     </footer>
 
-    <!-- Built-in automation script to sync Standings and Schedule names directly from CSV -->
     <script>
-        fetch('standings.csv')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Could not find the standings.csv file.");
-                }
-                return response.text();
-            })
-            .then(data => {
-                const rows = data.split('\n');
-                let standingsHtml = '';
-                
-                // Create an empty "Dictionary" or Array map to link Generic IDs to Custom Names
-                // e.g., teamMap["Team 1"] = "Real Madrid"
-                const teamMap = {};
-                
-                // Skip the first row (the column headers)
-                for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i].trim();
-                    if (!row) continue; // Skip empty rows
-                    
-                    const columns = row.split(',');
-                    
-                    if (columns.length >= 7) {
-                        const pos = columns[0].trim();
-                        const teamName = columns[1].trim();
-                        const gp = columns[2].trim();
-                        const w = columns[3].trim();
-                        const d = columns[4].trim();
-                        const l = columns[5].trim();
-                        const pts = columns[6].trim();
-                        
-                        // Map the generic name identifier based on its database position (i)
-                        // This links the current custom name to its hardcoded position
-                        teamMap[`Team ${i}`] = teamName;
-                        
-                        if (pos === "1") {
-                            standingsHtml += `<tr class="top-team"><td>1</td><td><strong>${teamName}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
-                        } else {
-                            standingsHtml += `<tr><td>${pos}</td><td>${teamName}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
-                        }
-                    }
-                }
-                
-                // Inject the custom rows into the standings block
-                document.getElementById('standings-data').innerHTML = standingsHtml;
-                
-                // --- DYNAMIC NAME SWAPPER FOR MATCH SCHEDULE ---
-                // Find all match elements on the page
-                const matchElements = document.querySelectorAll('.teams');
-                
-                matchElements.forEach(element => {
-                    let text = element.innerHTML;
-                    
-                    // Loop through our 16 mapped slots and replace "Team X" with their actual name
-                    for (let j = 1; j <= 16; j++) {
-                        const genericPlaceholder = `Team ${j}`;
-                        if (text.includes(genericPlaceholder) && teamMap[genericPlaceholder]) {
-                            text = text.replace(genericPlaceholder, teamMap[genericPlaceholder]);
-                        }
-                    }
-                    
-                    // Push the shiny new team names directly onto the schedule layout canvas
-                    element.innerHTML = text;
-                });
-            })
-            .catch(error => {
-                console.error('Error processing standings and schedule naming hooks:', error);
-                document.getElementById('standings-data').innerHTML = `<tr><td colspan="7" style="color: red; text-align:center;">Failed to load data.</td></tr>`;
-            });
-    </script>
+        let currentLang = 'en';
 
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute(`data-${currentLang}`);
+            });
+
+            const btn = document.getElementById('lang-btn');
+            btn.textContent = currentLang === 'en' ? 'Español 🇪🇸' : 'English 🇺🇸';
+
+            loadStandingsData();
+        }
+
+        function loadStandingsData() {
+            fetch('standings.csv')
+                .then(response => {
+                    if (!response.ok) throw new Error("Missing file.");
+                    return response.text();
+                })
+                .then(data => {
+                    const rows = data.split('\n');
+                    let standingsHtml = '';
+                    const teamMap = {};
+                    
+                    for (let i = 1; i < rows.length; i++) {
+                        const row = rows[i].trim();
+                        if (!row) continue;
+                        const columns = row.split(',');
+                        
+                        if (columns.length >= 7) {
+                            const pos = columns[0].trim();
+                            const teamName = columns[1].trim();
+                            const gp = columns[2].trim();
+                            const w = columns[3].trim();
+                            const d = columns[4].trim();
+                            const l = columns[5].trim();
+                            const pts = columns[6].trim();
+                            
+                            teamMap[`Team ${i}`] = teamName;
+                            
+                            if (pos === "1") {
+                                standingsHtml += `<tr class="top-team"><td>1</td><td><strong>${teamName}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                            } else {
+                                standingsHtml += `<tr><td>${pos}</td><td>${teamName}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
+                            }
+                        }
+                    }
+                    document.getElementById('standings-data').innerHTML = standingsHtml;
+                    
+                    document.querySelectorAll('.teams').forEach(element => {
+                        let text = element.innerHTML;
+                        for (let j = 1; j <= 16; j++) {
+                            const genericPlaceholder = `Team ${j}`;
+                            if (text.includes(genericPlaceholder) && teamMap[genericPlaceholder]) {
+                                text = text.replace(genericPlaceholder, teamMap[genericPlaceholder]);
+                            }
+                        }
+                        element.innerHTML = text;
+                    });
+                })
+                .catch(error => console.error('Error running text translations:', error));
+        }
+
+        loadStandingsData();
+    </script>
 
 </body>
 </html>
