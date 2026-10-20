@@ -8,168 +8,116 @@
 </head>
 <body>
 
-    <!-- Language Toggle Button -->
     <div class="lang-container">
         <button id="lang-btn" onclick="toggleLanguage()">Español 🇪🇸</button>
     </div>
 
-    <!-- Hero / Header Section -->
     <header>
         <div class="logo">⚽</div>
         <h1 data-en="Community Soccer League" data-es="Liga de Fútbol Comunitaria">Community Soccer League</h1>
-        <p data-en="Friday Night Lights • 16 Teams • 3 Time Slots" data-es="Viernes de Fútbol • 16 Equipos • 3 Horarios">Friday Night Lights • 16 Teams • 3 Time Slots</p>
-        <a href="#schedule" class="cta-btn" data-en="View Match Schedule" data-es="Ver Calendario de Partidos">View Match Schedule</a>
+        <p data-en="Friday Night Lights • 16 Teams" data-es="Viernes de Fútbol • 16 Equipos">Friday Night Lights • 16 Teams</p>
+        <a href="#schedule" class="cta-btn" data-en="View Schedule" data-es="Ver Calendario">View Schedule</a>
     </header>
 
     <main>
-        <!-- Notice Board Section -->
         <section class="card">
             <h2 data-en="League Notice Board" data-es="Tablón de Anuncios">League Notice Board</h2>
-            <p data-en="Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time." 
-               data-es="¡Bienvenidos jugadores, entrenadores y aficionados! Los partidos se juegan cada viernes por la noche en las canchas 1a a 3b. Por favor llegue 15 minutos antes de su hora de inicio.">
-               Welcome players, coaches, and fans! Matches are played every Friday night across fields 1a through 3b. Please arrive 15 minutes before your scheduled kickoff time.
+            <p data-en="Welcome players and fans! Matches are played every Friday across fields 1a through 3b." 
+               data-es="¡Bienvenidos! Los partidos se juegan cada viernes en las canchas 1a a 3b.">
+               Welcome players and fans! Matches are played every Friday across fields 1a through 3b.
             </p>
         </section>
 
-        <!-- Current Standings Table -->
         <section class="card">
-            <h2 id="title-standings" data-en="League Standings" data-es="Tabla de Posiciones">League Standings</h2>
+            <h2 data-en="League Standings" data-es="Tabla de Posiciones">League Standings</h2>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
-                            <th data-en="Pos" data-es="Pos">Pos</th>
+                            <th>Pos</th>
                             <th data-en="Team" data-es="Equipo">Team</th>
-                            <th data-en="GP" data-es="PJ">GP</th>
-                            <th data-en="W" data-es="G">W</th>
-                            <th data-en="D" data-es="E">D</th>
-                            <th data-en="L" data-es="P">L</th>
-                            <th data-en="Pts" data-es="Pts">Pts</th>
+                            <th>GP</th><th>W</th><th>D</th><th>L</th><th>Pts</th>
                         </tr>
                     </thead>
-                    <tbody id="standings-data">
-                        <!-- Loaded automatically from CSV -->
-                    </tbody>
+                    <tbody id="standings-data"></tbody>
                 </table>
             </div>
         </section>
 
-        <!-- Upcoming Match Schedule Section -->
         <section id="schedule" class="card">
-            <!-- Your custom goalie drawing layout -->
             <div style="text-align: center; margin-bottom: 1.5rem;">
-                <img src="goalie-diving.png" alt="Goalie Save" style="max-width: 180px; height: auto;">
+                <img src="goalie-diving.png" alt="Goalie" style="max-width: 180px; height: auto;">
             </div>
-
-            <h2 data-en="Upcoming Matches • Friday (Week 1)" data-es="Próximos Partidos • Viernes (Semana 1)">Upcoming Matches • Friday (Week 1)</h2>
-            
-            <!-- This exact wrapper ID is required for the script to load your spreadsheet data -->
-            <div class="schedule-grid" id="schedule-grid-container">
-                <!-- JavaScript will construct and insert your matches dynamically here from Excel! -->
-            </div>
+            <h2 data-en="Upcoming Matches" data-es="Próximos Partidos">Upcoming Matches</h2>
+            <div class="schedule-grid" id="schedule-grid-container"></div>
         </section>
 
-<!-- League Contact Info -->
         <section class="card highlight-card">
-            <h2 data-en="League Support & Registration" data-es="Soporte y Registro de la Liga">League Support & Registration</h2>
-            <p data-en="Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us."
-               data-es="¿Necesita reportar un error de puntaje, enviar un cambio de nómina o registrar a un jugador libre? Póngase en contacto con nosotros.">
-               Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us.
-            </p>
-            <p><strong data-en="Contact Email:" data-es="Correo de Contacto:">Contact Email:</strong> admin@yoursoccerleague.com</p>
+            <h2 data-en="League Support" data-es="Soporte de la Liga">League Support</h2>
+            <p data-en="Contact Email:" data-es="Correo de Contacto:">Contact Email:</p>
+            <p><strong>admin@yoursoccerleague.com</strong></p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Community Soccer League Hub. All rights reserved.</p>
+        <p>&copy; 2026 Community Soccer League. All rights reserved.</p>
     </footer>
 
-    <!-- Smart Live Spreadsheet Synchronizer Engine -->
     <script>
         let currentLang = 'en';
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'es' : 'en';
-            
             document.querySelectorAll('[data-en]').forEach(el => {
                 el.textContent = el.getAttribute(`data-${currentLang}`);
             });
-
-            const btn = document.getElementById('lang-btn');
-            btn.textContent = currentLang === 'en' ? 'Español 🇪🇸' : 'English 🇺🇸';
-
+            document.getElementById('lang-btn').textContent = currentLang === 'en' ? 'Español 🇪🇸' : 'English 🇺🇸';
             loadLeagueDatabase();
         }
 
         function loadLeagueDatabase() {
-            // Task 1: Fetch and build dynamic Standings Table
+            // 1. Fetch and Load Standings Table
             fetch('standings.csv')
-                .then(res => { if (!res.ok) throw new Error(); return res.text(); })
-                .then(standingsData => {
-                    const rows = standingsData.split('\n');
-                    let standingsHtml = '';
-                    
+                .then(res => res.text())
+                .then(data => {
+                    const rows = data.split('\n');
+                    let html = '';
                     for (let i = 1; i < rows.length; i++) {
                         const row = rows[i].trim();
                         if (!row) continue;
-                        const columns = row.split(',');
-                        
-                        if (columns.length >= 7) {
-                            const pos = columns[0].trim();
-                            const teamName = columns[1].trim();
-                            const gp = columns[2].trim();
-                            const w = columns[3].trim();
-                            const d = columns[4].trim();
-                            const l = columns[5].trim();
-                            const pts = columns[6].trim();
-                            
-                            if (pos === "1") {
-                                standingsHtml += `<tr class="top-team"><td>1</td><td><strong>${teamName}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
-                            } else {
-                                standingsHtml += `<tr><td>${pos}</td><td>${teamName}</td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
-                            }
+                        const col = row.split(',');
+                        if (col.length >= 7) {
+                            const cls = col[0].trim() === "1" ? 'class="top-team"' : '';
+                            html += `<tr ${cls}><td>${col[0]}</td><td>${col[1]}</td><td>${col[2]}</td><td>${col[3]}</td><td>${col[4]}</td><td>${col[5]}</td><td>${col[6]}</td></tr>`;
                         }
                     }
-                    document.getElementById('standings-data').innerHTML = standingsHtml;
-                    
-                    // Task 2: Fetch and build dynamic Match Cards directly from your scheduling spreadsheet
-                    return fetch('matches.csv');
-                })
-                .then(res => { if (!res.ok) throw new Error(); return res.text(); })
-                .then(matchesData => {
-                    const rows = matchesData.split('\n');
-                    let matchesHtml = '';
-                    
+                    document.getElementById('standings-data').innerHTML = html;
+                });
+
+            // 2. Fetch and Load Matches Layout
+            fetch('matches.csv')
+                .then(res => res.text())
+                .then(data => {
+                    const rows = data.split('\n');
+                    let html = '';
                     for (let i = 1; i < rows.length; i++) {
                         const row = rows[i].trim();
                         if (!row) continue;
-                        const columns = row.split(',');
-                        
-                        if (columns.length >= 4) {
-                            const time = columns[0].trim();
-                            const home = columns[1].trim();
-                            const away = columns[2].trim();
-                            const field = columns[3].trim();
-                            
-                            // Formats fields dynamically into Spanish if toggle is switched
-                            const displayField = currentLang === 'es' ? field.replace(/Field/g, 'Cancha') : field;
-                            
-                            matchesHtml += `
-                                <div class="match">
-                                    <span class="time">${time}</span>
-                                    <span class="teams">${home} <span style="color: #2ecc71;">VS</span> ${away}</span>
-                                    <span class="field">${displayField}</span>
-                                </div>`;
+                        const col = row.split(',');
+                        if (col.length >= 4) {
+                            const fieldTxt = currentLang === 'es' ? col[3].replace(/Field/g, 'Cancha') : col[3];
+                            html += `<div class="match">
+                                <span class="time">${col[0]}</span>
+                                <span class="teams">${col[1]} <span style="color:#2ecc71;">VS</span> ${col[2]}</span>
+                                <span class="field">${fieldTxt}</span>
+                            </div>`;
                         }
                     }
-                    document.getElementById('schedule-grid-container').innerHTML = matchesHtml;
-                })
-                .catch(err => console.error("Data tracking stream sync breakdown:", err));
+                    document.getElementById('schedule-grid-container').innerHTML = html;
+                });
         }
 
-        // Initialize league panels on page load
         loadLeagueDatabase();
     </script>
-
 </body>
 </html>
