@@ -53,13 +53,23 @@
                 </table>
             </div>
         </section>
+
         <!-- Upcoming Match Schedule Section -->
         <section id="schedule" class="card">
+            <!-- Your custom goalie drawing layout -->
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <img src="goalie-diving.png" alt="Goalie Save" style="max-width: 180px; height: auto;">
+            </div>
+
             <h2 data-en="Upcoming Matches • Friday (Week 1)" data-es="Próximos Partidos • Viernes (Semana 1)">Upcoming Matches • Friday (Week 1)</h2>
+            
+            <!-- This exact wrapper ID is required for the script to load your spreadsheet data -->
             <div class="schedule-grid" id="schedule-grid-container">
                 <!-- JavaScript will construct and insert your matches dynamically here from Excel! -->
             </div>
-        </section>        <!-- League Contact Info -->
+        </section>
+
+<!-- League Contact Info -->
         <section class="card highlight-card">
             <h2 data-en="League Support & Registration" data-es="Soporte y Registro de la Liga">League Support & Registration</h2>
             <p data-en="Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us."
