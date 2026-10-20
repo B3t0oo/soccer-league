@@ -56,87 +56,10 @@
         <!-- Upcoming Match Schedule Section -->
         <section id="schedule" class="card">
             <h2 data-en="Upcoming Matches • Friday (Week 1)" data-es="Próximos Partidos • Viernes (Semana 1)">Upcoming Matches • Friday (Week 1)</h2>
-            <div class="schedule-grid">
-                
-                <!-- 7:00 PM Slots -->
-                <div class="match">
-                    <span class="time">7:00 PM</span>
-                    <span class="teams">Team 1 <span style="color: #2ecc71;">VS</span> Team 2</span>
-                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
-                </div>
-                <div class="match">
-                    <span class="time">7:00 PM</span>
-                    <span class="teams">Team 3 <span style="color: #2ecc71;">VS</span> Team 4</span>
-                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
-                </div>
-
-                <!-- 8:00 PM Slots -->
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 6</span>
-                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
-                </div>
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 7 <span style="color: #2ecc71;">VS</span> Team 8</span>
-                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
-                </div>
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 10</span>
-                    <span class="field" data-en="Field 2a" data-es="Cancha 2a">Field 2a</span>
-                </div>
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 11 <span style="color: #2ecc71;">VS</span> Team 12</span>
-                    <span class="field" data-en="Field 2b" data-es="Cancha 2b">Field 2b</span>
-                </div>
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 14</span>
-                    <span class="field" data-en="Field 3a" data-es="Cancha 3a">Field 3a</span>
-                </div>
-                <div class="match">
-                    <span class="time">8:00 PM</span>
-                    <span class="teams">Team 15 <span style="color: #2ecc71;">VS</span> Team 16</span>
-                    <span class="field" data-en="Field 3b" data-es="Cancha 3b">Field 3b</span>
-                </div>
-
-                <!-- 9:00 PM Slots -->
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 5 <span style="color: #2ecc71;">VS</span> Team 7</span>
-                    <span class="field" data-en="Field 1a" data-es="Cancha 1a">Field 1a</span>
-                </div>
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 6 <span style="color: #2ecc71;">VS</span> Team 8</span>
-                    <span class="field" data-en="Field 1b" data-es="Cancha 1b">Field 1b</span>
-                </div>
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 9 <span style="color: #2ecc71;">VS</span> Team 11</span>
-                    <span class="field" data-en="Field 2a" data-es="Cancha 2a">Field 2a</span>
-                </div>
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 10 <span style="color: #2ecc71;">VS</span> Team 12</span>
-                    <span class="field" data-en="Field 2b" data-es="Cancha 2b">Field 2b</span>
-                </div>
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 13 <span style="color: #2ecc71;">VS</span> Team 15</span>
-                    <span class="field" data-en="Field 3a" data-es="Cancha 3a">Field 3a</span>
-                </div>
-                <div class="match">
-                    <span class="time">9:00 PM</span>
-                    <span class="teams">Team 14 <span style="color: #2ecc71;">VS</span> Team 16</span>
-                    <span class="field" data-en="Field 3b" data-es="Cancha 3b">Field 3b</span>
-                </div>
-
+            <div class="schedule-grid" id="schedule-grid-container">
+                <!-- JavaScript will construct and insert your matches dynamically here from Excel! -->
             </div>
-        </section>
-        <!-- League Contact Info -->
+        </section>        <!-- League Contact Info -->
         <section class="card highlight-card">
             <h2 data-en="League Support & Registration" data-es="Soporte y Registro de la Liga">League Support & Registration</h2>
             <p data-en="Need to report a score error, submit a roster change, or register a free agent card? Get in touch with us."
@@ -151,6 +74,7 @@
         <p>&copy; 2026 Community Soccer League Hub. All rights reserved.</p>
     </footer>
 
+    <!-- Smart Live Spreadsheet Synchronizer Engine -->
     <script>
         let currentLang = 'en';
 
@@ -164,19 +88,16 @@
             const btn = document.getElementById('lang-btn');
             btn.textContent = currentLang === 'en' ? 'Español 🇪🇸' : 'English 🇺🇸';
 
-            loadStandingsData();
+            loadLeagueDatabase();
         }
 
-        function loadStandingsData() {
+        function loadLeagueDatabase() {
+            // Task 1: Fetch and build dynamic Standings Table
             fetch('standings.csv')
-                .then(response => {
-                    if (!response.ok) throw new Error("Missing file.");
-                    return response.text();
-                })
-                .then(data => {
-                    const rows = data.split('\n');
+                .then(res => { if (!res.ok) throw new Error(); return res.text(); })
+                .then(standingsData => {
+                    const rows = standingsData.split('\n');
                     let standingsHtml = '';
-                    const teamMap = {};
                     
                     for (let i = 1; i < rows.length; i++) {
                         const row = rows[i].trim();
@@ -192,8 +113,6 @@
                             const l = columns[5].trim();
                             const pts = columns[6].trim();
                             
-                            teamMap[`Team ${i}`] = teamName;
-                            
                             if (pos === "1") {
                                 standingsHtml += `<tr class="top-team"><td>1</td><td><strong>${teamName}</strong></td><td>${gp}</td><td>${w}</td><td>${d}</td><td>${l}</td><td>${pts}</td></tr>`;
                             } else {
@@ -203,21 +122,43 @@
                     }
                     document.getElementById('standings-data').innerHTML = standingsHtml;
                     
-                    document.querySelectorAll('.teams').forEach(element => {
-                        let text = element.innerHTML;
-                        for (let j = 1; j <= 16; j++) {
-                            const genericPlaceholder = `Team ${j}`;
-                            if (text.includes(genericPlaceholder) && teamMap[genericPlaceholder]) {
-                                text = text.replace(genericPlaceholder, teamMap[genericPlaceholder]);
-                            }
-                        }
-                        element.innerHTML = text;
-                    });
+                    // Task 2: Fetch and build dynamic Match Cards directly from your scheduling spreadsheet
+                    return fetch('matches.csv');
                 })
-                .catch(error => console.error('Error running text translations:', error));
+                .then(res => { if (!res.ok) throw new Error(); return res.text(); })
+                .then(matchesData => {
+                    const rows = matchesData.split('\n');
+                    let matchesHtml = '';
+                    
+                    for (let i = 1; i < rows.length; i++) {
+                        const row = rows[i].trim();
+                        if (!row) continue;
+                        const columns = row.split(',');
+                        
+                        if (columns.length >= 4) {
+                            const time = columns[0].trim();
+                            const home = columns[1].trim();
+                            const away = columns[2].trim();
+                            const field = columns[3].trim();
+                            
+                            // Formats fields dynamically into Spanish if toggle is switched
+                            const displayField = currentLang === 'es' ? field.replace(/Field/g, 'Cancha') : field;
+                            
+                            matchesHtml += `
+                                <div class="match">
+                                    <span class="time">${time}</span>
+                                    <span class="teams">${home} <span style="color: #2ecc71;">VS</span> ${away}</span>
+                                    <span class="field">${displayField}</span>
+                                </div>`;
+                        }
+                    }
+                    document.getElementById('schedule-grid-container').innerHTML = matchesHtml;
+                })
+                .catch(err => console.error("Data tracking stream sync breakdown:", err));
         }
 
-        loadStandingsData();
+        // Initialize league panels on page load
+        loadLeagueDatabase();
     </script>
 
 </body>
